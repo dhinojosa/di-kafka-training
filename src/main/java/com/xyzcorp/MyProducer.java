@@ -39,8 +39,6 @@ public class MyProducer {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             done.set(true);
-            producer.flush();
-            producer.close();
         }));
 
         Random random = new Random();
@@ -83,5 +81,8 @@ public class MyProducer {
 
             Thread.sleep(random.nextInt(30000 - 1000 + 1) + 1000);
         }
+        
+        producer.flush();
+        producer.close();
     }
 }
